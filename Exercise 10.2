@@ -1,0 +1,22 @@
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+count = dict()
+
+#print file_data
+
+for line in handle:
+    if line.startswith('From ') == False:
+        continue
+    words = line.split()
+    #print words
+    word = words[5].split(':')
+    #print word
+    count[word[0]] = count.get(word[0],0)+1
+
+tuple = count.items()
+tuple.sort()
+
+for a,b in tuple:
+    print a,b
